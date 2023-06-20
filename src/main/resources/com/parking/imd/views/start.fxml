@@ -4,7 +4,6 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 
-
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="171.0" prefWidth="360.0" style="-fx-background-color: #FDFDFD;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.parking.imd.controllers.StartController">
    <children>
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="5.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
