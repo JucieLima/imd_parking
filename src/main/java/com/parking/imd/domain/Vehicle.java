@@ -3,6 +3,8 @@ package com.parking.imd.domain;
 import java.util.Date;
 
 public class Vehicle {
+
+    String idVehicle;
     String licencePlate;
     Date entryTime;
     Date exitTime;

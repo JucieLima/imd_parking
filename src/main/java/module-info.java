@@ -3,7 +3,6 @@ module com.parks.imd.imdparking {
     requires javafx.fxml;
 
     requires org.controlsfx.controls;
-    requires org.kordamp.bootstrapfx.core;
 
     opens com.parking.imd to javafx.fxml;
     opens com.parking.imd.controllers to javafx.fxml;

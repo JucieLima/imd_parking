@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox prefHeight="600.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.parking.imd.controllers.DashboardController">
+  <children>
+    <MenuBar VBox.vgrow="NEVER">
+      <menus>
+        <Menu mnemonicParsing="false" text="Principal">
+          <items>
+            <MenuItem mnemonicParsing="false" text="Movimentações" />
+                  <MenuItem mnemonicParsing="false" text="Entrada de Veículo" />
+                  <MenuItem mnemonicParsing="false" text="Saída de Veículo" />
+          </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Usuários">
+          <items>
+                  <MenuItem mnemonicParsing="false" text="Ver Clientes" />
+            <MenuItem mnemonicParsing="false" text="Ver Funcionários" />
+                  <MenuItem mnemonicParsing="false" text="Cadastrar Usuário" />
+          </items>
+        </Menu>
+      </menus>
+    </MenuBar>
+    <AnchorPane fx:id="dashboardPane" maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS" />
+  </children>
+</VBox>
