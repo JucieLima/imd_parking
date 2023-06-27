@@ -51,11 +51,10 @@ public class StartController{
             Parent page = loader.load();
             DashboardController controller = loader.getController();
             controller.handleMenuItemMovements();
-            Scene scene = new Scene(page, 960, 700);
+            Scene scene = new Scene(page, 960, 650);
             newStage.initStyle(StageStyle.DECORATED);
             newStage.setResizable(true);
             newStage.setTitle("IMD Parking");
-            scene.getStylesheets().add(String.valueOf(StartController.class.getResource("/com/parking/imd/assets/style.css")));
             Image icon = new Image(String.valueOf(StartApplication.class.getResource("/com/parking/imd/images/IMDParking.png")));
             newStage.getIcons().add(icon);
             newStage.setScene(scene);
