@@ -27,7 +27,7 @@ public class LoginController {
 
     @FXML
     void handleButtonLogin() {
-        if(textFieldEmail.getText().equals("jucielima@gmail.com") && textFieldPassword.getText().equals("123456")){
+        if(textFieldEmail.getText().equals("") && textFieldPassword.getText().equals("")){
             logged = true;
         }
 

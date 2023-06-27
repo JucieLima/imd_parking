@@ -12,7 +12,7 @@
       <menus>
         <Menu mnemonicParsing="false" text="Principal">
           <items>
-            <MenuItem mnemonicParsing="false" text="Movimentações" />
+            <MenuItem mnemonicParsing="false" onAction="#handleMenuItemMovements" text="Movimentações" />
                   <MenuItem mnemonicParsing="false" text="Entrada de Veículo" />
                   <MenuItem mnemonicParsing="false" text="Saída de Veículo" />
           </items>

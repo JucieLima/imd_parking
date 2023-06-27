@@ -22,11 +22,11 @@ public class StartDatabase {
         protected Void call(){
             try {
                 System.out.println("limpando registros vencidos...");
-                TimeUnit.SECONDS.sleep(1);
+                TimeUnit.MILLISECONDS.sleep(1);
                 System.out.println("Salvando notificacoes...");
-                TimeUnit.SECONDS.sleep(1);
+                TimeUnit.MILLISECONDS.sleep(1);
                 System.out.println("Realizando backup...");
-                TimeUnit.SECONDS.sleep(2);
+                TimeUnit.MILLISECONDS.sleep(2);
                 System.out.println("Iniciando aplicacao");
             }
             catch (Exception e) {

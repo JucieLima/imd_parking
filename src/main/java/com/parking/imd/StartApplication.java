@@ -4,6 +4,7 @@ import com.parking.imd.controllers.StartController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -18,6 +19,7 @@ public class StartApplication extends Application {
         stage.setScene(scene);
         StartController controller = fxmlLoader.getController();
         controller.startDatabase(stage);
+        stage.setTitle("IMD Parking");
         stage.show();
     }
 

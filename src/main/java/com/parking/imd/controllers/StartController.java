@@ -1,13 +1,16 @@
 package com.parking.imd.controllers;
 
+import com.parking.imd.StartApplication;
 import com.parking.imd.data.StartDatabase;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class StartController{
 
@@ -30,7 +33,8 @@ public class StartController{
             newStage.initStyle(StageStyle.DECORATED);
             newStage.setResizable(false);
             newStage.setTitle("IMD Parking");
-            scene.getStylesheets().add(String.valueOf(StartController.class.getResource("/com/parking/imd/assets/style.css")));
+            Image icon = new Image(Objects.requireNonNull(StartApplication.class.getResource("/com/parking/imd/images/IMDParking.png")).toString());
+            newStage.getIcons().add(icon);
             newStage.setScene(scene);
             newStage.show();
         } catch (IOException e) {
@@ -46,11 +50,14 @@ public class StartController{
         try {
             Parent page = loader.load();
             DashboardController controller = loader.getController();
-            Scene scene = new Scene(page, 900, 600);
+            controller.handleMenuItemMovements();
+            Scene scene = new Scene(page, 960, 700);
             newStage.initStyle(StageStyle.DECORATED);
             newStage.setResizable(true);
             newStage.setTitle("IMD Parking");
             scene.getStylesheets().add(String.valueOf(StartController.class.getResource("/com/parking/imd/assets/style.css")));
+            Image icon = new Image(String.valueOf(StartApplication.class.getResource("/com/parking/imd/images/IMDParking.png")));
+            newStage.getIcons().add(icon);
             newStage.setScene(scene);
             newStage.show();
         } catch (IOException e) {
