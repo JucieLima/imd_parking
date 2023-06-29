@@ -38,7 +38,7 @@ public class LoginController {
         connection = database.connect();
     }
 
-    private EmployeeDAO employeeDAO = new EmployeeDAO();
+    private final EmployeeDAO employeeDAO = new EmployeeDAO();
 
 
     @FXML

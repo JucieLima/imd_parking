@@ -10,32 +10,31 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.parking.imd.controllers.MovementsController">
    <left>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Button layoutX="74.0" layoutY="44.0" mnemonicParsing="false" text="Entrada de Veículo" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="20.0">
+            <Button fx:id="handleButtonVehicleEntrance" layoutX="74.0" layoutY="44.0" mnemonicParsing="false" text="Entrada de Veículo" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="20.0">
                <font>
                   <Font size="16.0" />
                </font>
             </Button>
-            <Button layoutX="23.0" layoutY="58.0" mnemonicParsing="false" text="Saída de Veículo" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="65.0">
+            <Button fx:id="handleButtonVehicleExit" layoutX="23.0" layoutY="58.0" mnemonicParsing="false" text="Saída de Veículo" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="65.0">
                <font>
                   <Font size="16.0" />
                </font>
             </Button>
-            <Button layoutX="14.0" layoutY="112.0" mnemonicParsing="false" text="Receber Pagamento" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="110.0">
+            <Button fx:id="handleButtonPayment" layoutX="14.0" layoutY="112.0" mnemonicParsing="false" text="Receber Pagamento" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="110.0">
                <font>
                   <Font size="16.0" />
                </font>
             </Button>
-            <Button layoutX="10.0" layoutY="158.0" mnemonicParsing="false" text="Liberar Entrada" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
+            <Button fx:id="handleButtonOpenGateEntry" layoutX="10.0" layoutY="158.0" mnemonicParsing="false" text="Liberar Entrada" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
                <font>
                   <Font size="16.0" />
                </font>
             </Button>
-            <Button layoutX="10.0" layoutY="205.0" mnemonicParsing="false" text="Liberar Saída" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
+            <Button fx:id="handleButtonOpenGateExit" layoutX="10.0" layoutY="205.0" mnemonicParsing="false" text="Liberar Saída" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
                <font>
                   <Font size="16.0" />
                </font>
@@ -51,7 +50,7 @@
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="51.0" text="00,00" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="51.0">
+            <Label fx:id="labelBalance" alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="51.0" text="00,00" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="51.0">
                <font>
                   <Font size="24.0" />
                </font>
@@ -62,7 +61,7 @@
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutY="135.0" text="0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+            <Label fx:id="labelEntriesNumber" alignment="CENTER" contentDisplay="CENTER" layoutY="135.0" text="0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                <font>
                   <Font size="24.0" />
                </font>
@@ -73,7 +72,7 @@
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutY="213.0" text="0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+            <Label fx:id="labelExitsNumber" alignment="CENTER" contentDisplay="CENTER" layoutY="213.0" text="0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                <font>
                   <Font size="24.0" />
                </font>
@@ -84,7 +83,7 @@
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="292.0" text="0,0%" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+            <Label fx:id="labelRate" alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="292.0" text="0,0%" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                <font>
                   <Font size="24.0" />
                </font>
@@ -95,27 +94,27 @@
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="373.0" text="0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+            <Separator layoutX="10.0" layoutY="413.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+            <Label fx:id="vacanciesLabels" alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="373.0" text="0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                <font>
                   <Font size="24.0" />
                </font>
             </Label>
-            <Separator layoutX="10.0" layoutY="413.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
          </children>
       </AnchorPane>
    </right>
    <center>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <AnchorPane fx:id="anchorPanePageView" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Pagination layoutX="53.0" layoutY="229.0" maxPageIndicatorCount="1" pageCount="1" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-            <TableView layoutX="150.0" layoutY="74.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="20.0">
+            <Pagination fx:id="pagination" layoutX="53.0" layoutY="229.0" maxPageIndicatorCount="5" pageCount="1" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            <TableView fx:id="tableViewMovements" layoutX="150.0" layoutY="74.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="20.0">
               <columns>
-                <TableColumn prefWidth="75.0" text="ID" />
-                <TableColumn prefWidth="75.0" text="PLACA" />
-                  <TableColumn prefWidth="75.0" text="ENTRADA" />
-                  <TableColumn prefWidth="75.0" text="SAÍDA" />
-                  <TableColumn prefWidth="150.0" text="STATUS" />
-                  <TableColumn prefWidth="75.0" text="VALOR" />
+                <TableColumn fx:id="tableColumnId" prefWidth="40.0" text="ID" />
+                <TableColumn fx:id="tableColumnLicencePlate" prefWidth="75.0" text="PLACA" />
+                  <TableColumn fx:id="tableColumnEntryTime" prefWidth="130.0" text="ENTRADA" />
+                  <TableColumn fx:id="tableColumnExitTime" prefWidth="130.0" text="SAÍDA" />
+                  <TableColumn fx:id="tableColumnStatus" prefWidth="75.0" text="STATUS" />
+                  <TableColumn fx:id="tableColumnValue" prefWidth="75.0" text="VALOR" />
               </columns>
             </TableView>
          </children>

@@ -10,9 +10,7 @@ public class StartDatabase {
     public StartDatabase(StartController startController) {
         StartDatabaseTask startTask = new StartDatabaseTask();
         Thread thread = new Thread(startTask);
-        startTask.setOnSucceeded( close->{
-            startController.goToLogin();
-        });
+        startTask.setOnSucceeded(event->startController.goToLogin());
         thread.start();
     }
 

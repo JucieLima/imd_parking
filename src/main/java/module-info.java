@@ -9,4 +9,5 @@ module com.parks.imd.imdparking {
     opens com.parking.imd.controllers to javafx.fxml;
     exports com.parking.imd;
     exports com.parking.imd.controllers to javafx.fxml;
+    opens com.parking.imd.domain to javafx.base;
 }

@@ -4,10 +4,16 @@ import java.util.Date;
 
 public class Vehicle {
 
-    String idVehicle;
+    Integer idVehicle;
     String licencePlate;
-    Date entryTime;
-    Date exitTime;
+
+    public Integer getIdVehicle() {
+        return idVehicle;
+    }
+
+    public void setIdVehicle(Integer idVehicle) {
+        this.idVehicle = idVehicle;
+    }
 
     public String getLicencePlate() {
         return licencePlate;
@@ -17,19 +23,4 @@ public class Vehicle {
         this.licencePlate = licencePlate;
     }
 
-    public Date getEntryTime() {
-        return entryTime;
-    }
-
-    public void setEntryTime(Date entryTime) {
-        this.entryTime = entryTime;
-    }
-
-    public Date getExitTime() {
-        return exitTime;
-    }
-
-    public void setExitTime(Date exitTime) {
-        this.exitTime = exitTime;
-    }
 }
