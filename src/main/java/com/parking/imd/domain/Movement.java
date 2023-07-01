@@ -1,12 +1,12 @@
 package com.parking.imd.domain;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 public class Movement {
     Integer idMovement;
     Vehicle vehicle;
-    Date entryTime;
-    Date exitTime;
+    LocalDateTime entryTime;
+    LocalDateTime exitTime;
     int status;
     String statusName;
     Double value;
@@ -27,19 +27,19 @@ public class Movement {
         this.vehicle = vehicle;
     }
 
-    public Date getEntryTime() {
+    public LocalDateTime getEntryTime() {
         return entryTime;
     }
 
-    public void setEntryTime(Date entryTime) {
+    public void setEntryTime(LocalDateTime entryTime) {
         this.entryTime = entryTime;
     }
 
-    public Date getExitTime() {
+    public LocalDateTime getExitTime() {
         return exitTime;
     }
 
-    public void setExitTime(Date exitTime) {
+    public void setExitTime(LocalDateTime exitTime) {
         this.exitTime = exitTime;
     }
 

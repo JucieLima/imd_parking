@@ -14,6 +14,10 @@ public class EmployeeDAO implements DAO {
         this.connection = connection;
     }
 
+    public void delete(Object object) {
+
+    }
+
     public Employee login(String email){
         String sql = "SELECT users.*, employees.email, employees.password FROM users " +
                 "INNER JOIN employees ON users.id = employees.id_user " +

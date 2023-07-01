@@ -14,7 +14,7 @@
         <Menu mnemonicParsing="false" text="Principal">
           <items>
             <MenuItem mnemonicParsing="false" onAction="#handleMenuItemMovements" text="Movimentações" />
-                  <MenuItem mnemonicParsing="false" text="Entrada de Veículo" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleMenuItemReleaseEntry" text="Entrada de Veículo" />
                   <MenuItem mnemonicParsing="false" text="Saída de Veículo" />
                   <SeparatorMenuItem mnemonicParsing="false" />
                   <MenuItem mnemonicParsing="false" text="Preferências" />

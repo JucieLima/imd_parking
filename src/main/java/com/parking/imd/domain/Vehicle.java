@@ -6,6 +6,8 @@ public class Vehicle {
 
     Integer idVehicle;
     String licencePlate;
+    int type;
+    String typeName;
 
     public Integer getIdVehicle() {
         return idVehicle;
@@ -23,4 +25,19 @@ public class Vehicle {
         this.licencePlate = licencePlate;
     }
 
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
+
+    public String getTypeName() {
+        return typeName;
+    }
+
+    public void setTypeName(String typeName) {
+        this.typeName = typeName;
+    }
 }

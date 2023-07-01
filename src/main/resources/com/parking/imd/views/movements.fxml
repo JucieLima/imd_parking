@@ -14,7 +14,7 @@
    <left>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="handleButtonVehicleEntrance" layoutX="74.0" layoutY="44.0" mnemonicParsing="false" text="Entrada de Veículo" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="20.0">
+            <Button layoutX="74.0" layoutY="44.0" mnemonicParsing="false" onAction="#handleButtonVehicleEntrance" text="Entrada de Veículo" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="20.0">
                <font>
                   <Font size="16.0" />
                </font>
@@ -113,8 +113,9 @@
                 <TableColumn fx:id="tableColumnLicencePlate" prefWidth="75.0" text="PLACA" />
                   <TableColumn fx:id="tableColumnEntryTime" prefWidth="130.0" text="ENTRADA" />
                   <TableColumn fx:id="tableColumnExitTime" prefWidth="130.0" text="SAÍDA" />
-                  <TableColumn fx:id="tableColumnStatus" prefWidth="75.0" text="STATUS" />
+                  <TableColumn fx:id="tableColumnType" prefWidth="120.0" text="TIPO" />
                   <TableColumn fx:id="tableColumnValue" prefWidth="75.0" text="VALOR" />
+                  <TableColumn fx:id="tableColumnStatus" prefWidth="120.0" text="STATUS" />
               </columns>
             </TableView>
          </children>
