@@ -43,17 +43,17 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <TextField fx:id="textFieldPlate" layoutX="95.0" layoutY="204.0" prefHeight="40.0" prefWidth="98.0" promptText="AAA0A00">
+      <TextField fx:id="textFieldPlate" layoutX="95.0" layoutY="204.0" prefHeight="40.0" prefWidth="123.0" promptText="AAA0A00">
          <font>
             <Font size="18.0" />
          </font>
       </TextField>
-      <Label layoutX="214.0" layoutY="209.0" text="Tipo:">
+      <Label layoutX="238.0" layoutY="209.0" text="Tipo:">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <ComboBox fx:id="comboBoxType" layoutX="263.4" layoutY="205.0" prefHeight="38.0" prefWidth="161.0" promptText="Selecione" style="-fx-font-size: 12pt;" AnchorPane.rightAnchor="175.0" />
+      <ComboBox fx:id="comboBoxType" layoutX="263.4" layoutY="205.0" prefHeight="38.0" prefWidth="138.0" promptText="Selecione" style="-fx-font-size: 12pt;" AnchorPane.rightAnchor="175.0" />
       <Label layoutX="445.0" layoutY="176.0" text="Adcionar">
          <font>
             <Font size="16.0" />

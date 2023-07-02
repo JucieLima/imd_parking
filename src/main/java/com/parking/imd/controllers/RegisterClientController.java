@@ -1,8 +1,10 @@
 package com.parking.imd.controllers;
 
-import com.parking.imd.dao.AccountDAO;
-import com.parking.imd.dao.ClientDAO;
-import com.parking.imd.dao.VehicleDAO;
+import com.parking.imd.dao.impl.AccountDaoImpl;
+import com.parking.imd.dao.impl.ClientDaoImpl;
+import com.parking.imd.dao.impl.VehicleDaoImpl;
+import com.parking.imd.dao.interfaces.ClientDAO;
+import com.parking.imd.dao.interfaces.VehicleDAO;
 import com.parking.imd.data.DataBaseConfig;
 import com.parking.imd.data.Database;
 import com.parking.imd.data.DatabaseFactory;
@@ -66,8 +68,8 @@ public class RegisterClientController implements Initializable {
         connection = database.connect();
     }
 
-    VehicleDAO vehicleDAO = new VehicleDAO();
-    ClientDAO clientDAO = new ClientDAO();
+    VehicleDAO vehicleDAO = new VehicleDaoImpl();
+    ClientDAO clientDAO = new ClientDaoImpl();
 
     ArrayList<Vehicle> vehicles = new ArrayList<>();
 
@@ -166,7 +168,7 @@ public class RegisterClientController implements Initializable {
         Account account = new Account();
         account.setIdClient(idClient);
         account.setBalance(0);
-        AccountDAO accountDAO = new AccountDAO();
+        AccountDaoImpl accountDAO = new AccountDaoImpl();
         accountDAO.setConnection(connection);
         accountDAO.insert(account);
     }

@@ -1,12 +1,14 @@
-package com.parking.imd.dao;
+package com.parking.imd.dao.impl;
 
+import com.parking.imd.dao.interfaces.AccountDAO;
 import com.parking.imd.domain.Account;
+import com.parking.imd.domain.Client;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class AccountDAO implements DAO{
+public class AccountDaoImpl implements AccountDAO {
     Connection connection;
 
     @Override
@@ -14,6 +16,7 @@ public class AccountDAO implements DAO{
         this.connection = connection;
     }
 
+    @Override
     public void insert(Account account) {
         String sql = "INSERT INTO account (balance, client) VALUES (?, ?) ";
         try {
@@ -24,5 +27,20 @@ public class AccountDAO implements DAO{
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    @Override
+    public Client find(Account account) {
+        return null;
+    }
+
+    @Override
+    public void update(Account account) {
+
+    }
+
+    @Override
+    public void delete(int idAccount) {
+
     }
 }

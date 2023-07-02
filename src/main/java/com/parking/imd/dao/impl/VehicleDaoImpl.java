@@ -1,10 +1,11 @@
-package com.parking.imd.dao;
+package com.parking.imd.dao.impl;
 
+import com.parking.imd.dao.interfaces.VehicleDAO;
 import com.parking.imd.domain.Vehicle;
 
 import java.sql.*;
 
-public class VehicleDAO implements DAO {
+public class VehicleDaoImpl implements VehicleDAO {
     Connection connection;
 
     @Override
@@ -12,7 +13,7 @@ public class VehicleDAO implements DAO {
         this.connection = connection;
     }
 
-    public Integer insertVehicle(Vehicle vehicle) {
+    public Integer insert(Vehicle vehicle) {
         int result = 0;
         String sql = "INSERT INTO vehicles (licence_plate, type) VALUES(?, ?)";
         try {
@@ -44,7 +45,7 @@ public class VehicleDAO implements DAO {
                 vehicle.setLicencePlate(resultSet.getString("licence_plate"));
                 vehicle.setType(resultSet.getInt("type"));
             }else{
-               vehicle.setIdVehicle(insertVehicle(vehicle));
+               vehicle.setIdVehicle(insert(vehicle));
             }
             vehicle.setTypeName(getTypeName(type));
         } catch (SQLException e) {
@@ -52,6 +53,16 @@ public class VehicleDAO implements DAO {
         }
 
         return vehicle;
+    }
+
+    @Override
+    public void update(Vehicle vehicle) {
+
+    }
+
+    @Override
+    public void delete(int idVehicle) {
+
     }
 
     public boolean checkAlreadyOwned(Vehicle vehicle) {
@@ -83,6 +94,18 @@ public class VehicleDAO implements DAO {
     }
 
     public String getTypeName(int type) {
+        return switch (type) {
+            case 0 -> "Motocicleta";
+            case 1 -> "Automóvel";
+            case 2 -> "Caminhonete";
+            case 3 -> "Caminhão";
+            case 4 -> "Ônibus";
+            case 5 -> "Microônibus";
+            default -> "Desconhecido";
+        };
+    }
+
+    public static String getTypename(int type){
         return switch (type) {
             case 0 -> "Motocicleta";
             case 1 -> "Automóvel";

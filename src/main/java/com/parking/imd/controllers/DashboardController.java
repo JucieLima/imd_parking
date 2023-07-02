@@ -1,6 +1,5 @@
 package com.parking.imd.controllers;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -75,6 +74,17 @@ public class DashboardController {
 
     @FXML
     void handleMenuItemClientsOpen() {
-
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/parking/imd/views/clients.fxml"));
+        AnchorPane root;
+        try {
+            root = loader.load();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        AnchorPane.setRightAnchor(root,0.0);
+        AnchorPane.setLeftAnchor(root,0.0);
+        AnchorPane.setTopAnchor(root,0.0);
+        AnchorPane.setBottomAnchor(root,0.0);
+        dashboardPane.getChildren().setAll(root);
     }
 }

@@ -1,6 +1,7 @@
 package com.parking.imd.controllers;
 
-import com.parking.imd.dao.EmployeeDAO;
+import com.parking.imd.dao.impl.EmployeeDaoImpl;
+import com.parking.imd.dao.interfaces.EmployeeDAO;
 import com.parking.imd.data.DataBaseConfig;
 import com.parking.imd.data.Database;
 import com.parking.imd.data.DatabaseFactory;
@@ -38,7 +39,7 @@ public class LoginController {
         connection = database.connect();
     }
 
-    private final EmployeeDAO employeeDAO = new EmployeeDAO();
+    private final EmployeeDAO employeeDAO = new EmployeeDaoImpl();
 
 
     @FXML

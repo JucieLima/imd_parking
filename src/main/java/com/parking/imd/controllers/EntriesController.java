@@ -1,7 +1,8 @@
 package com.parking.imd.controllers;
 
-import com.parking.imd.dao.MovementDAO;
-import com.parking.imd.dao.VehicleDAO;
+import com.parking.imd.dao.impl.MovementDaoImpl;
+import com.parking.imd.dao.impl.VehicleDaoImpl;
+import com.parking.imd.dao.interfaces.MovementDAO;
 import com.parking.imd.data.DataBaseConfig;
 import com.parking.imd.data.Database;
 import com.parking.imd.data.DatabaseFactory;
@@ -24,8 +25,6 @@ import java.net.URL;
 import java.sql.Connection;
 import java.time.LocalDateTime;
 import java.util.ResourceBundle;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class EntriesController implements Initializable {
 
@@ -37,7 +36,7 @@ public class EntriesController implements Initializable {
         connection = database.connect();
     }
 
-    MovementDAO movementDAO = new MovementDAO();
+    MovementDAO movementDAO = new MovementDaoImpl();
 
     @FXML
     private ComboBox<String> comboBoxType;
@@ -82,7 +81,7 @@ public class EntriesController implements Initializable {
     }
 
     private void releaseNewEntry() {
-        VehicleDAO vehicleDAO = new VehicleDAO();
+        VehicleDaoImpl vehicleDAO = new VehicleDaoImpl();
         vehicleDAO.setConnection(connection);
         Vehicle vehicle = vehicleDAO.find(textFieldLicencePlate.getText(), comboBoxType.getSelectionModel().getSelectedIndex());
         Movement movement = new Movement();

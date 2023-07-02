@@ -1,5 +1,6 @@
-package com.parking.imd.dao;
+package com.parking.imd.dao.impl;
 
+import com.parking.imd.dao.interfaces.MovementDAO;
 import com.parking.imd.domain.Movement;
 import com.parking.imd.domain.Vehicle;
 
@@ -7,7 +8,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MovementDAO implements DAO {
+public class MovementDaoImpl implements MovementDAO {
 
     Connection connection;
 
@@ -17,7 +18,7 @@ public class MovementDAO implements DAO {
     }
 
 
-    public int getMovementListCount(){
+    public int total(){
         int result = 0;
         String sql = "SELECT COUNT(*) AS total FROM movements";
         try {
@@ -32,7 +33,7 @@ public class MovementDAO implements DAO {
         return result;
     }
 
-    public List<Movement> getMovementList(Integer limit, Integer offset){
+    public List<Movement> list(Integer limit, Integer offset){
         List<Movement> movementList = new ArrayList<>();
         String sql = "SELECT movements.*, vehicles.id AS id_vehicle, vehicles.licence_plate, vehicles.type FROM movements " +
                 "INNER JOIN vehicles ON movements.vehicle = vehicles.id ORDER BY entry_time DESC LIMIT ? OFFSET ? ";
@@ -81,6 +82,11 @@ public class MovementDAO implements DAO {
         }
     }
 
+    @Override
+    public Movement find(Movement movement) {
+        return null;
+    }
+
     public void update(Movement movement){
         String sql = "UPDATE movements SET vehicle = ?, entry_time = ?, exit_time = ?, status = ?, value = ? " +
                 "WHERE id = ?";
@@ -100,8 +106,13 @@ public class MovementDAO implements DAO {
         }
     }
 
+    @Override
+    public void delete(int idAccount) {
+
+    }
+
     public String getTypeName(int type){
-        VehicleDAO vehicleDAO = new VehicleDAO();
+        VehicleDaoImpl vehicleDAO = new VehicleDaoImpl();
         return vehicleDAO.getTypeName(type);
     }
 

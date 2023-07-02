@@ -1,6 +1,7 @@
 package com.parking.imd.controllers;
 
-import com.parking.imd.dao.MovementDAO;
+import com.parking.imd.dao.impl.MovementDaoImpl;
+import com.parking.imd.dao.interfaces.MovementDAO;
 import com.parking.imd.data.DataBaseConfig;
 import com.parking.imd.data.Database;
 import com.parking.imd.data.DatabaseFactory;
@@ -94,7 +95,7 @@ public class MovementsController implements Initializable {
         connection = database.connect();
     }
 
-    MovementDAO movementDAO = new MovementDAO();
+    MovementDAO movementDAO = new MovementDaoImpl();
     int maxItems = 200;
     List<Movement> movements = new ArrayList<>();
 
@@ -103,31 +104,16 @@ public class MovementsController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         movementDAO.setConnection(connection);
-        int pages = (int) Math.ceil((float) movementDAO.getMovementListCount()/maxItems);
+        int pages = (int) Math.ceil((float) movementDAO.total()/maxItems);
         pages = pages != 0 ? pages : 1;
         pagination.setPageCount(pages);
         anchorPanePageView.getChildren().remove(tableViewMovements);
         pagination.setPageFactory(pageIndex -> {
-            movements = movementDAO.getMovementList(maxItems, pageIndex*maxItems);
+            movements = movementDAO.list(maxItems, pageIndex*maxItems);
             loadTableMovements();
             return createPage();
         });
         //updateTimes();
-    }
-
-    private void updateTimes() {
-        List<Movement> movementList = movementDAO.getMovementList(600, 0);
-        long entry = 0;
-        long exit = 25;
-        for(Movement m : movementList){
-            LocalDateTime entryTime = m.getEntryTime().plusMinutes(entry);
-            LocalDateTime exitTime = m.getExitTime().plusMinutes(exit);
-            m.setEntryTime(entryTime);
-            m.setExitTime(exitTime);
-            movementDAO.update(m);
-            entry += 4;
-            exit += 4;
-        }
     }
 
     private Node createPage() {

@@ -1,11 +1,9 @@
 package com.parking.imd.domain;
 
-import java.util.List;
-
 public class Account {
     Integer idAccount;
     Integer idClient;
-    float balance;
+    double balance;
 
     public Integer getIdAccount() {
         return idAccount;
@@ -23,11 +21,11 @@ public class Account {
         this.idClient = idClient;
     }
 
-    public float getBalance() {
+    public double getBalance() {
         return balance;
     }
 
-    public void setBalance(float balance) {
+    public void setBalance(double balance) {
         this.balance = balance;
     }
 }

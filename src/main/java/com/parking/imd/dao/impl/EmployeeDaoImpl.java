@@ -1,13 +1,15 @@
-package com.parking.imd.dao;
+package com.parking.imd.dao.impl;
 
+import com.parking.imd.dao.interfaces.EmployeeDAO;
 import com.parking.imd.domain.Employee;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
-public class EmployeeDAO implements DAO {
+public class EmployeeDaoImpl implements EmployeeDAO {
     private Connection connection;
 
     public void setConnection(Connection connection) {
@@ -41,7 +43,8 @@ public class EmployeeDAO implements DAO {
         return null;
     }
 
-    public Employee findEmployee(Employee employee){
+    @Override
+    public Employee find(Employee employee){
         String sql = "SELECT users.*, employees.email, employees.password FROM persons " +
                 "INNER JOIN employees ON users.id = employees.id_person " +
                 "WHERE users.id = ? OR users.name LIKE ? OR users.cpf LIKE ?";
@@ -63,6 +66,25 @@ public class EmployeeDAO implements DAO {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+        return null;
+    }
+
+    @Override
+    public Integer insert(Employee employee) {
+        return null;
+    }
+    @Override
+    public void update(Employee employee) {
+
+    }
+
+    @Override
+    public void delete(int idEmployee) {
+
+    }
+
+    @Override
+    public List<Employee> list(int limit, int offset) {
         return null;
     }
 }
