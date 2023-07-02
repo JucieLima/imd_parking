@@ -1,5 +1,6 @@
 package com.parking.imd.controllers;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -50,5 +51,30 @@ public class DashboardController {
         controller.setStage(stage);
         controller.setDashboard(this);
         stage.show();
+    }
+
+    public void handleMenuItemClientRegister() {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/parking/imd/views/registerClient.fxml"));
+        AnchorPane pane;
+        try {
+            pane = loader.load();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        Scene scene = new Scene(pane);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.setTitle("IMD Parking - Registro de Novo cliente");
+        stage.setResizable(false);
+        stage.initOwner(dashboardPane.getScene().getWindow());
+        stage.initModality(Modality.WINDOW_MODAL);
+        RegisterClientController controller = loader.getController();
+        controller.setStage(stage);
+        stage.show();
+    }
+
+    @FXML
+    void handleMenuItemClientsOpen() {
+
     }
 }

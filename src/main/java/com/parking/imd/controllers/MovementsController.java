@@ -14,6 +14,7 @@ import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import javafx.util.Callback;
 
 import java.net.URL;
 import java.sql.Connection;
@@ -107,7 +108,7 @@ public class MovementsController implements Initializable {
         pagination.setPageCount(pages);
         anchorPanePageView.getChildren().remove(tableViewMovements);
         pagination.setPageFactory(pageIndex -> {
-            movements = movementDAO.getMovementList(maxItems, pageIndex);
+            movements = movementDAO.getMovementList(maxItems, pageIndex*maxItems);
             loadTableMovements();
             return createPage();
         });
@@ -144,38 +145,30 @@ public class MovementsController implements Initializable {
         tableColumnLicencePlate.setCellValueFactory(cell -> new SimpleStringProperty(cell.getValue().getVehicle().getLicencePlate()));
         tableColumnType.setCellValueFactory(cell -> new SimpleStringProperty(cell.getValue().getVehicle().getTypeName()));
         tableColumnEntryTime.setCellValueFactory(new PropertyValueFactory<>("entryTime"));
-        tableColumnEntryTime.setCellFactory(col -> new TableCell<>() {
-            @Override
-            protected void updateItem(LocalDateTime item, boolean empty) {
-
-                super.updateItem(item, empty);
-                String pattern = "dd/MM/YY HH:mm";
-                DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern(pattern);
-                if (empty)
-                    setText(null);
-                else
-                    setText(dateFormat.format(item));
-            }
-        });
+        tableColumnEntryTime.setCellFactory(getTableColumnTableCellCallback());
         tableColumnExitTime.setCellValueFactory(new PropertyValueFactory<>("exitTime"));
-        tableColumnExitTime.setCellFactory(col -> new TableCell<>() {
+        tableColumnExitTime.setCellFactory(getTableColumnTableCellCallback());
+        tableColumnStatus.setCellValueFactory(new PropertyValueFactory<>("statusName"));
+        tableColumnValue.setCellValueFactory(new PropertyValueFactory<>("value"));
+        ObservableList<Movement> observableList = FXCollections.observableList(movements);
+        tableViewMovements.setItems(observableList);
+    }
+
+    private Callback<TableColumn<Movement, LocalDateTime>, TableCell<Movement, LocalDateTime>> getTableColumnTableCellCallback() {
+        return col -> new TableCell<>() {
             @Override
             protected void updateItem(LocalDateTime item, boolean empty) {
 
                 super.updateItem(item, empty);
                 if (empty || item == null) {
                     setText(null);
-                }else {
+                } else {
                     String pattern = "dd/MM/YY HH:mm";
                     DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern(pattern);
                     setText(dateFormat.format(item));
                 }
             }
-        });
-        tableColumnStatus.setCellValueFactory(new PropertyValueFactory<>("statusName"));
-        tableColumnValue.setCellValueFactory(new PropertyValueFactory<>("value"));
-        ObservableList<Movement> observableList = FXCollections.observableList(movements);
-        tableViewMovements.setItems(observableList);
+        };
     }
 
     public void setDashboard(DashboardController dashboard) {

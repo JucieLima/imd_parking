@@ -7,6 +7,7 @@ import com.parking.imd.data.Database;
 import com.parking.imd.data.DatabaseFactory;
 import com.parking.imd.domain.Movement;
 import com.parking.imd.domain.Vehicle;
+import com.parking.imd.util.ValidateFields;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -59,7 +60,7 @@ public class EntriesController implements Initializable {
     @FXML
     void handleButtonReleaseEntry() {
         String error = "";
-        if (!validatePlate()) {
+        if (!ValidateFields.validatePlate(textFieldLicencePlate.getText())) {
             error = "Por favor, informe uma placa válida!\n";
         }
 
@@ -115,11 +116,7 @@ public class EntriesController implements Initializable {
         stage.showAndWait();
     }
 
-    private boolean validatePlate() {
-        Pattern pattern = Pattern.compile("^[a-zA-Z]{3}\\d[a-zA-Z\\d]\\d{2}$", Pattern.CASE_INSENSITIVE);
-        Matcher matcher = pattern.matcher(textFieldLicencePlate.getText());
-        return matcher.find();
-    }
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

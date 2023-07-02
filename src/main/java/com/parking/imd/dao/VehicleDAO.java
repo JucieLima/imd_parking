@@ -13,7 +13,7 @@ public class VehicleDAO implements DAO {
     }
 
     public Integer insertVehicle(Vehicle vehicle) {
-        Integer result = 0;
+        int result = 0;
         String sql = "INSERT INTO vehicles (licence_plate, type) VALUES(?, ?)";
         try {
             PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
@@ -46,10 +46,51 @@ public class VehicleDAO implements DAO {
             }else{
                vehicle.setIdVehicle(insertVehicle(vehicle));
             }
+            vehicle.setTypeName(getTypeName(type));
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
 
         return vehicle;
+    }
+
+    public boolean checkAlreadyOwned(Vehicle vehicle) {
+        vehicle = find(vehicle.getLicencePlate(), vehicle.getType());
+        String sql = "SELECT vehicle, client FROM vehicles_owners WHERE vehicle = ? ";
+        try {
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setInt(1, vehicle.getIdVehicle());
+            ResultSet resultSet = statement.executeQuery();
+            if(resultSet.next()){
+                return true;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return false;
+    }
+
+    public void setVehicleOwner(Integer vehicle, Integer client) {
+        String sql = "INSERT INTO vehicles_owners (vehicle, client) VALUES (?,?)";
+        try {
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setInt(1, vehicle);
+            statement.setInt(2, client);
+            statement.execute();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public String getTypeName(int type) {
+        return switch (type) {
+            case 0 -> "Motocicleta";
+            case 1 -> "Automóvel";
+            case 2 -> "Caminhonete";
+            case 3 -> "Caminhão";
+            case 4 -> "Ônibus";
+            case 5 -> "Microônibus";
+            default -> "Desconhecido";
+        };
     }
 }

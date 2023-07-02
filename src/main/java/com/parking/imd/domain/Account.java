@@ -4,8 +4,8 @@ import java.util.List;
 
 public class Account {
     Integer idAccount;
+    Integer idClient;
     float balance;
-    List<Vehicle> vehicles;
 
     public Integer getIdAccount() {
         return idAccount;
@@ -15,19 +15,19 @@ public class Account {
         this.idAccount = idAccount;
     }
 
+    public Integer getIdClient() {
+        return idClient;
+    }
+
+    public void setIdClient(Integer idClient) {
+        this.idClient = idClient;
+    }
+
     public float getBalance() {
         return balance;
     }
 
     public void setBalance(float balance) {
         this.balance = balance;
-    }
-
-    public List<Vehicle> getVehicles() {
-        return vehicles;
-    }
-
-    public void setVehicles(List<Vehicle> vehicles) {
-        this.vehicles = vehicles;
     }
 }

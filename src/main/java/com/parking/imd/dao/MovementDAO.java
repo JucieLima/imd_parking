@@ -101,15 +101,8 @@ public class MovementDAO implements DAO {
     }
 
     public String getTypeName(int type){
-        return switch (type) {
-            case 0 -> "Motocicleta";
-            case 1 -> "Automóvel";
-            case 2 -> "Caminhonete";
-            case 3 -> "Caminhão";
-            case 4 -> "Ônibus";
-            case 5 -> "Microônibus";
-            default -> "Desconhecido";
-        };
+        VehicleDAO vehicleDAO = new VehicleDAO();
+        return vehicleDAO.getTypeName(type);
     }
 
     public String getStatusName(int type){
