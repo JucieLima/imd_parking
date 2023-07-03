@@ -131,16 +131,16 @@ public class MovementsController implements Initializable {
         tableColumnLicencePlate.setCellValueFactory(cell -> new SimpleStringProperty(cell.getValue().getVehicle().getLicencePlate()));
         tableColumnType.setCellValueFactory(cell -> new SimpleStringProperty(cell.getValue().getVehicle().getTypeName()));
         tableColumnEntryTime.setCellValueFactory(new PropertyValueFactory<>("entryTime"));
-        tableColumnEntryTime.setCellFactory(getTableColumnTableCellCallback());
+        tableColumnEntryTime.setCellFactory(getColumnTableTimeCallback());
         tableColumnExitTime.setCellValueFactory(new PropertyValueFactory<>("exitTime"));
-        tableColumnExitTime.setCellFactory(getTableColumnTableCellCallback());
+        tableColumnExitTime.setCellFactory(getColumnTableTimeCallback());
         tableColumnStatus.setCellValueFactory(new PropertyValueFactory<>("statusName"));
         tableColumnValue.setCellValueFactory(new PropertyValueFactory<>("value"));
         ObservableList<Movement> observableList = FXCollections.observableList(movements);
         tableViewMovements.setItems(observableList);
     }
 
-    private Callback<TableColumn<Movement, LocalDateTime>, TableCell<Movement, LocalDateTime>> getTableColumnTableCellCallback() {
+    private Callback<TableColumn<Movement, LocalDateTime>, TableCell<Movement, LocalDateTime>> getColumnTableTimeCallback() {
         return col -> new TableCell<>() {
             @Override
             protected void updateItem(LocalDateTime item, boolean empty) {
@@ -164,5 +164,10 @@ public class MovementsController implements Initializable {
     @FXML
     void handleButtonVehicleEntrance() {
         dashboard.handleMenuItemReleaseEntry();
+    }
+
+    @FXML
+    void handleButtonVehicleExit() {
+        dashboard.handleMenuItemReleaseExit();
     }
 }

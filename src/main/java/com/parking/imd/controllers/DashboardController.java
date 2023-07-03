@@ -87,4 +87,30 @@ public class DashboardController {
         AnchorPane.setBottomAnchor(root,0.0);
         dashboardPane.getChildren().setAll(root);
     }
+
+
+    @FXML
+    void handleMenuItemReleaseExit() {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/parking/imd/views/exit.fxml"));
+        AnchorPane anchorPane;
+        try {
+            anchorPane = loader.load();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        Stage stage = new Stage();
+        stage.initModality(Modality.WINDOW_MODAL);
+        stage.initOwner(dashboardPane.getScene().getWindow());
+        stage.setTitle("Liberar Saída de Veículo");
+        Scene scene = new Scene(anchorPane);
+        stage.setScene(scene);
+        ExitController controller = loader.getController();
+        controller.setStage(stage);
+        controller.setDashboard(this);
+        stage.show();
+    }
+
+    public AnchorPane getDashboardPane() {
+        return dashboardPane;
+    }
 }

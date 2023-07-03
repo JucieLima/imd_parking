@@ -116,6 +116,40 @@ public class MovementDaoImpl implements MovementDAO {
         return vehicleDAO.getTypeName(type);
     }
 
+    @Override
+    public List<Movement> vehicleList(Vehicle vehicle) {
+        List<Movement> movements = new ArrayList<>();
+        String sql = "SELECT movements.*, vehicles.id AS id_vehicle, vehicles.licence_plate, vehicles.type FROM movements " +
+                "INNER JOIN vehicles ON movements.vehicle = vehicles.id WHERE vehicles.id = ? AND movements.status = 0 ORDER BY entry_time ASC ";
+
+        try {
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setInt(1, vehicle.getIdVehicle());
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()){
+                Vehicle v = new Vehicle();
+                v.setIdVehicle(resultSet.getInt("id_vehicle"));
+                v.setType(resultSet.getInt("type"));
+                v.setTypeName(VehicleDaoImpl.getTypename(resultSet.getInt("type")));
+                v.setLicencePlate(resultSet.getString("licence_plate"));
+
+                Movement movement = new Movement();
+
+                movement.setIdMovement(resultSet.getInt("id"));
+                movement.setVehicle(v);
+                movement.setEntryTime(resultSet.getTimestamp("entry_time").toLocalDateTime());
+                movement.setExitTime(resultSet.getTimestamp("exit_time") != null ? resultSet.getTimestamp("exit_time").toLocalDateTime() : null);
+                movement.setValue(resultSet.getDouble("value"));
+                movement.setStatusName(getStatusName(resultSet.getInt("status")));
+                movement.setStatus(resultSet.getInt("status"));
+                movements.add(movement);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return movements;
+    }
+
     public String getStatusName(int type){
         return switch (type) {
             case 0 -> "Veículo no Pátio";

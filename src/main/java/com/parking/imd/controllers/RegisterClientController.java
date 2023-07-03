@@ -252,22 +252,13 @@ public class RegisterClientController implements Initializable {
         for (int i = 0; i < 7; i++) {
             comboBoxType.getItems().add(vehicleDAO.getTypeName(i));
         }
-        setTextFieldPlate();
         tableViewVehicles.getSelectionModel().selectedItemProperty().addListener(
-                (observable,oldValue, newValue) -> setSelectedVehicle(newValue));
+                (observable,oldValue, newValue) -> setSelectedVehicle(newValue)
+        );
+        ValidateFields.setTextFieldLicencePlate(textFieldPlate);
     }
 
     private void setSelectedVehicle(Vehicle selectedVehicle) {
         buttonRemove.setDisable(selectedVehicle == null);
-    }
-
-    private void setTextFieldPlate() {
-        textFieldPlate.setOnKeyReleased(e -> {
-            if (textFieldPlate.getText().length() > 7) {
-                textFieldPlate.setText(textFieldPlate.getText().substring(0, 7));
-            }
-            textFieldPlate.setText(textFieldPlate.getText().toUpperCase());
-            textFieldPlate.positionCaret(textFieldPlate.getText().length());
-        });
     }
 }

@@ -1,7 +1,5 @@
 package com.parking.imd.domain;
 
-import java.util.Date;
-
 public class Vehicle {
 
     Integer idVehicle;

@@ -30,7 +30,7 @@ public class AccountDaoImpl implements AccountDAO {
     }
 
     @Override
-    public Client find(Account account) {
+    public Account find(Account account) {
         return null;
     }
 

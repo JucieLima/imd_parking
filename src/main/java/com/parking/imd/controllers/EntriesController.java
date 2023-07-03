@@ -123,16 +123,7 @@ public class EntriesController implements Initializable {
         for (int i = 0; i < 7; i++) {
             comboBoxType.getItems().add(movementDAO.getTypeName(i));
         }
-        setTextFieldLicencePlate();
+        ValidateFields.setTextFieldLicencePlate(textFieldLicencePlate);
     }
 
-    private void setTextFieldLicencePlate() {
-        textFieldLicencePlate.setOnKeyReleased(e -> {
-            if (textFieldLicencePlate.getText().length() > 7) {
-                textFieldLicencePlate.setText(textFieldLicencePlate.getText().substring(0, 7));
-            }
-            textFieldLicencePlate.setText(textFieldLicencePlate.getText().toUpperCase());
-            textFieldLicencePlate.positionCaret(textFieldLicencePlate.getText().length());
-        });
-    }
 }

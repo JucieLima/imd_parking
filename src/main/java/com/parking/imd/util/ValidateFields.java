@@ -1,5 +1,7 @@
 package com.parking.imd.util;
 
+import javafx.scene.control.TextField;
+
 import java.util.InputMismatchException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -66,5 +68,16 @@ public class ValidateFields {
         Pattern pattern = Pattern.compile("^[a-zA-Z]{3}\\d[a-zA-Z\\d]\\d{2}$", Pattern.CASE_INSENSITIVE);
         Matcher matcher = pattern.matcher(plate);
         return matcher.find();
+    }
+
+    public static TextField setTextFieldLicencePlate(TextField textFieldLicencePlate) {
+        textFieldLicencePlate.setOnKeyReleased(e -> {
+            if (textFieldLicencePlate.getText().length() > 7) {
+                textFieldLicencePlate.setText(textFieldLicencePlate.getText().substring(0, 7));
+            }
+            textFieldLicencePlate.setText(textFieldLicencePlate.getText().toUpperCase());
+            textFieldLicencePlate.positionCaret(textFieldLicencePlate.getText().length());
+        });
+        return textFieldLicencePlate;
     }
 }

@@ -2,6 +2,7 @@ package com.parking.imd.dao.interfaces;
 
 import com.parking.imd.dao.DAO;
 import com.parking.imd.domain.Movement;
+import com.parking.imd.domain.Vehicle;
 
 import java.util.List;
 
@@ -13,4 +14,5 @@ public interface MovementDAO extends DAO {
     List<Movement> list(Integer limit, Integer offset);
     int total();
     String getTypeName(int i);
+    List<Movement> vehicleList(Vehicle vehicle);
 }

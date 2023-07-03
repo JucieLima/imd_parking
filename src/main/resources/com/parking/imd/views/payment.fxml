@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="650.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.parking.imd.controllers.PaymentController">
+   <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <children>
+         <AnchorPane prefHeight="80.0" prefWidth="200.0">
+            <children>
+               <Label alignment="CENTER" layoutX="561.0" layoutY="75.0" style="-fx-background-color: #FFF;" text="Resumo do Pagamento" textAlignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <font>
+                     <Font size="24.0" />
+                  </font>
+               </Label>
+            </children>
+         </AnchorPane>
+         <HBox prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+            <children>
+               <AnchorPane prefHeight="570.0" prefWidth="363.0" style="-fx-background-color: #EDEDED;">
+                  <children>
+                     <Label alignment="CENTER" layoutX="-47.0" layoutY="15.0" text="Total da Venda" textAlignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                        <font>
+                           <Font size="24.0" />
+                        </font>
+                     </Label>
+                     <Separator layoutY="99.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+                     <Label fx:id="labelTotal" alignment="CENTER" layoutY="49.0" text="R$ 8,99" textAlignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                        <font>
+                           <Font size="24.0" />
+                        </font>
+                     </Label>
+                     <Label alignment="CENTER" layoutX="10.0" layoutY="110.0" text="Forma de Pagamento" textAlignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                        <font>
+                           <Font size="24.0" />
+                        </font>
+                     </Label>
+                     <Separator layoutX="10.0" layoutY="194.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+                     <Label fx:id="labelPaymentMethod" alignment="CENTER" layoutX="10.0" layoutY="144.0" text="Dinheiro" textAlignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                        <font>
+                           <Font size="24.0" />
+                        </font>
+                     </Label>
+                     <Label alignment="CENTER" layoutX="10.0" layoutY="201.0" text="Troco" textAlignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                        <font>
+                           <Font size="24.0" />
+                        </font>
+                     </Label>
+                     <Separator layoutX="10.0" layoutY="285.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+                     <Button layoutX="20.0" layoutY="307.0" mnemonicParsing="false" onAction="#handleButtonPaymentMethod" text="Alterar foma de pagamento" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
+                        <font>
+                           <Font size="18.0" />
+                        </font>
+                     </Button>
+                     <Button layoutX="30.0" layoutY="354.0" mnemonicParsing="false" onAction="#handleButtonReleasePayment" text="Finalizar" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
+                        <font>
+                           <Font size="18.0" />
+                        </font>
+                     </Button>
+                     <Button layoutX="30.0" layoutY="469.0" mnemonicParsing="false" onAction="#handleButtonCancel" text="Cancelar" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
+                        <font>
+                           <Font size="18.0" />
+                        </font>
+                     </Button>
+                     <Label fx:id="labelCashChange" alignment="CENTER" layoutX="10.0" layoutY="235.0" text="R$ 0,00" textAlignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                        <font>
+                           <Font size="24.0" />
+                        </font>
+                     </Label>
+                  </children>
+               </AnchorPane>
+               <AnchorPane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+                  <children>
+                     <TableView fx:id="tableViewMovements" layoutX="20.0" layoutY="100.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="100.0">
+                        <columns>
+                           <TableColumn fx:id="tableColumnId" prefWidth="75.0" text="ID" />
+                           <TableColumn fx:id="tableColumnPlate" prefWidth="75.0" text="PLACA" />
+                           <TableColumn fx:id="tableColumnType" prefWidth="90.0" text="TIPO" />
+                           <TableColumn fx:id="tableColumnEntry" prefWidth="120.0" text="ENTRADA" />
+                           <TableColumn fx:id="tableColumnExit" prefWidth="120.0" text="SAÍDA" />
+                           <TableColumn fx:id="tableColumnTime" prefWidth="75.0" text="TEMPO" />
+                           <TableColumn fx:id="tableColumnValue" prefWidth="75.0" text="VALOR" />
+                        </columns>
+                     </TableView>
+                     <Label layoutX="28.0" layoutY="14.0" text="Cliente:" AnchorPane.leftAnchor="20.0">
+                        <font>
+                           <Font size="16.0" />
+                        </font>
+                     </Label>
+                     <Label fx:id="labelClientName" layoutX="78.0" layoutY="14.0" text="Avulso">
+                        <font>
+                           <Font name="System Bold" size="16.0" />
+                        </font>
+                     </Label>
+                     <Label layoutX="22.0" layoutY="82.0" text="Movimentações" />
+                     <Label fx:id="labelPaymentTime" layoutX="20.0" layoutY="41.0" text="02/07/2023 18:39" AnchorPane.leftAnchor="20.0">
+                        <font>
+                           <Font size="16.0" />
+                        </font>
+                     </Label>
+                     <Label layoutX="78.0" layoutY="41.0">
+                        <font>
+                           <Font size="16.0" />
+                        </font>
+                     </Label>
+                  </children>
+               </AnchorPane>
+            </children>
+         </HBox>
+      </children>
+   </VBox>
+</AnchorPane>

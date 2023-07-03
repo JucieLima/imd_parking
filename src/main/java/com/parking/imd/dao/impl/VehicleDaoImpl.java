@@ -2,6 +2,7 @@ package com.parking.imd.dao.impl;
 
 import com.parking.imd.dao.interfaces.VehicleDAO;
 import com.parking.imd.domain.Vehicle;
+import javafx.scene.control.TextField;
 
 import java.sql.*;
 
@@ -91,6 +92,29 @@ public class VehicleDaoImpl implements VehicleDAO {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    @Override
+    public Vehicle findOnYard(String plate) {
+        String sql = "SELECT vehicles.id, licence_plate, type FROm vehicles " +
+                "INNER JOIN movements ON movements.vehicle = vehicles.id " +
+                "WHERE movements.status = 0 AND vehicles.licence_plate = ?";
+        try {
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, plate);
+            ResultSet resultSet = statement.executeQuery();
+            if(resultSet.next()){
+                Vehicle vehicle = new Vehicle();
+                vehicle.setIdVehicle(resultSet.getInt("id"));
+                vehicle.setLicencePlate(resultSet.getString("licence_plate"));
+                vehicle.setType(resultSet.getInt("type"));
+                vehicle.setTypeName(getTypeName(resultSet.getInt("type")));
+                return vehicle;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return null;
     }
 
     public String getTypeName(int type) {
