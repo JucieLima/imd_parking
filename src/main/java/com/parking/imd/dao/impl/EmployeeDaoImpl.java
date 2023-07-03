@@ -30,7 +30,7 @@ public class EmployeeDaoImpl implements EmployeeDAO {
             ResultSet resultSet = statement.executeQuery();
             if(resultSet.next()){
                 Employee result = new Employee();
-                result.setIdEmployee(resultSet.getInt("id"));
+                result.setId(resultSet.getInt("id"));
                 result.setNome(resultSet.getString("name"));
                 result.setCPF(resultSet.getString("cpf"));
                 result.setEmail(resultSet.getString("email"));
@@ -50,13 +50,13 @@ public class EmployeeDaoImpl implements EmployeeDAO {
                 "WHERE users.id = ? OR users.name LIKE ? OR users.cpf LIKE ?";
         try {
             PreparedStatement statement = connection.prepareStatement(sql);
-            statement.setInt(1, employee.getIdEmployee());
+            statement.setInt(1, employee.getId());
             statement.setString(2, employee.getNome());
             statement.setString(3, employee.getCPF());
             ResultSet resultSet = statement.executeQuery();
             if(resultSet.next()){
                 Employee result = new Employee();
-                result.setIdEmployee(resultSet.getInt("id"));
+                result.setId(resultSet.getInt("id"));
                 result.setNome(resultSet.getString("nome"));
                 result.setCPF(resultSet.getString("cpf"));
                 result.setEmail(resultSet.getString("email"));

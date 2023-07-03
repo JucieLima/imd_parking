@@ -9,6 +9,5 @@ public interface ParkingDAO extends DAO {
     Parking read(Parking parking);
     void  update(Parking parking);
     List<String> getPaymentMethods();
-
     Double getTypeValue(int type);
 }

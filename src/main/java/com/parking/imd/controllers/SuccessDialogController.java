@@ -6,7 +6,7 @@ import javafx.stage.Stage;
 
 public class SuccessDialogController {
 
-    Stage stage;
+    private  Stage stage;
     @FXML
     private Text textMsg;
 

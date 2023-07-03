@@ -56,6 +56,27 @@ public class VehicleDaoImpl implements VehicleDAO {
         return vehicle;
     }
 
+    public Vehicle find(Vehicle vehicle) {
+        String sql = "SELECT id, licence_plate, type FROM vehicles WHERE vehicles.licence_plate = ?";
+        try {
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, vehicle.getLicencePlate());
+            ResultSet resultSet = statement.executeQuery();
+            if(resultSet.next()){
+                vehicle.setIdVehicle(resultSet.getInt("id"));
+                vehicle.setLicencePlate(resultSet.getString("licence_plate"));
+                vehicle.setType(resultSet.getInt("type"));
+            }else{
+                vehicle.setIdVehicle(insert(vehicle));
+                vehicle.setTypeName(getTypeName(resultSet.getInt("type")));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return vehicle;
+    }
+
     @Override
     public void update(Vehicle vehicle) {
 

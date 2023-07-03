@@ -81,8 +81,8 @@ public class ClientsController implements Initializable {
         connection = database.connect();
     }
 
-    ClientDAO clientDAO = new ClientDaoImpl();
-    VehicleDAO vehicleDAO = new VehicleDaoImpl();
+    private final ClientDAO clientDAO = new ClientDaoImpl();
+    private final VehicleDAO vehicleDAO = new VehicleDaoImpl();
 
     int maxItems = 100;
 
@@ -129,8 +129,8 @@ public class ClientsController implements Initializable {
 
     private void loadSelectedClient(Client client) {
         if(client != null){
-            client.setAccount(clientDAO.getAccount(client.getIdClient()));
-            client.setVehicles(clientDAO.getClientVehicles(client.getIdClient()));
+            client.setAccount(clientDAO.getAccount(client.getId()));
+            client.setVehicles(clientDAO.getClientVehicles(client.getId()));
             Locale ptBr = new Locale("pt", "BR");
             labelClientBalance.setText(NumberFormat.getCurrencyInstance(ptBr).format(client.getAccount().getBalance()));
             labelClientName.setText(client.getNome());

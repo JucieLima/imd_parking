@@ -87,7 +87,7 @@ public class ClientDaoImpl implements ClientDAO {
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()){
                 Client client = new Client();
-                client.setIdClient(resultSet.getInt("id"));
+                client.setId(resultSet.getInt("id"));
                 client.setNome(resultSet.getString("name"));
                 client.setCPF(resultSet.getString("CPF"));
                 clients.add(client);
