@@ -125,7 +125,8 @@ public class ExitController implements Initializable {
             movement.setExitTime(LocalDateTime.now());
             Double price = parkingDAO.getTypeValue(movement.getVehicle().getType());
             long timeDiff = ChronoUnit.HOURS.between(movement.getEntryTime(), movement.getExitTime());
-            double movementValue = price * timeDiff;
+            //O cálculo permite uma tolerância de 15 minutos
+            double movementValue = ChronoUnit.MINUTES.between(movement.getEntryTime(), movement.getExitTime()) > 15 ? (price * timeDiff) + price : 0;
             movement.setValue(movementValue);
             value += movementValue;
         }

@@ -71,6 +71,10 @@ public class ClientDaoImpl implements ClientDAO {
         String sql = "SELECT COUNT(*) AS total FROM clients ";
         try {
             PreparedStatement statement = connection.prepareStatement(sql);
+            ResultSet resultSet = statement.executeQuery();
+            if(resultSet.next()){
+                return resultSet.getInt("total");
+            }
         }catch (SQLException e){
             throw  new RuntimeException(e);
         }
@@ -79,7 +83,7 @@ public class ClientDaoImpl implements ClientDAO {
 
     public List<Client> list(int limit, int offset) {
         List<Client> clients = new ArrayList<>();
-        String sql = "SELECT id, name, CPF FROM clients ORDER BY created_at LIMIT ? OFFSET ?";
+        String sql = "SELECT id, name, CPF FROM clients ORDER BY created_at DESC LIMIT ? OFFSET ?";
         try {
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setInt(1, limit);

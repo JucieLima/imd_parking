@@ -149,7 +149,7 @@ public class ClientsController implements Initializable {
     }
 
     private void loadTableViewClients() {
-        tableColumnID.setCellValueFactory(new PropertyValueFactory<>("idClient"));
+        tableColumnID.setCellValueFactory(new PropertyValueFactory<>("id"));
         tableColumnName.setCellValueFactory(new PropertyValueFactory<>("nome"));
         tableColumnCPF.setCellValueFactory(new PropertyValueFactory<>("CPF"));
         ObservableList<Client> observableList = FXCollections.observableList(clientList);
