@@ -113,4 +113,22 @@ public class DashboardController {
     public AnchorPane getDashboardPane() {
         return dashboardPane;
     }
+
+    @FXML
+    public void handleMenuItemEmployeeRegister(){
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/parking/imd/views/registerEmployee.fxml"));
+        BorderPane rootPane;
+        try {
+            rootPane = loader.load();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        RegisterEmployeeController controller = loader.getController();
+        controller.setDashboardController(this);
+        AnchorPane.setLeftAnchor(rootPane,0.0);
+        AnchorPane.setRightAnchor(rootPane,0.0);
+        AnchorPane.setTopAnchor(rootPane,0.0);
+        AnchorPane.setBottomAnchor(rootPane,0.0);
+        dashboardPane.getChildren().setAll(rootPane);
+    }
 }

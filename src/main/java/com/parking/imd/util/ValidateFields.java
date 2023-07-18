@@ -2,6 +2,8 @@ package com.parking.imd.util;
 
 import javafx.scene.control.TextField;
 
+import org.apache.commons.validator.routines.EmailValidator;
+
 import java.util.InputMismatchException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -79,5 +81,9 @@ public class ValidateFields {
             textFieldLicencePlate.positionCaret(textFieldLicencePlate.getText().length());
         });
         return textFieldLicencePlate;
+    }
+
+    public static boolean isEmail(String emailAddress){
+        return EmailValidator.getInstance().isValid(emailAddress.trim());
     }
 }

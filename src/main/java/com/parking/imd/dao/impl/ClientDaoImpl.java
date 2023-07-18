@@ -19,13 +19,14 @@ public class ClientDaoImpl implements ClientDAO {
 
     public Integer insert(Client client) {
         Timestamp now = new Timestamp(new java.util.Date().getTime());
-        String sql = "INSERT INTO clients (name, CPF, created_at, updated_at) VALUES (?,?,?,?)";
+        String sql = "INSERT INTO users (name, CPF, user_function, created_at, updated_at) VALUES (?,?,?,?,?)";
         try {
             PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             statement.setString(1, client.getNome());
             statement.setString(2, client.getCPF());
-            statement.setTimestamp(3, now);
+            statement.setInt(3, 0);
             statement.setTimestamp(4, now);
+            statement.setTimestamp(5, now);
             statement.executeUpdate();
             ResultSet resultSet = statement.getGeneratedKeys();
             if(resultSet.next()){
@@ -53,7 +54,7 @@ public class ClientDaoImpl implements ClientDAO {
     }
 
     public boolean checkClientCPF(String cpf) {
-        String sql = "SELECT clients.CPF FROM clients WHERE CPF = ?";
+        String sql = "SELECT users.CPF FROM users WHERE CPF = ?";
         try {
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, cpf);
@@ -68,7 +69,7 @@ public class ClientDaoImpl implements ClientDAO {
     }
 
     public int getClientsCount() {
-        String sql = "SELECT COUNT(*) AS total FROM clients ";
+        String sql = "SELECT COUNT(*) AS total FROM users WHERE user_function = 0 ";
         try {
             PreparedStatement statement = connection.prepareStatement(sql);
             ResultSet resultSet = statement.executeQuery();
@@ -83,7 +84,7 @@ public class ClientDaoImpl implements ClientDAO {
 
     public List<Client> list(int limit, int offset) {
         List<Client> clients = new ArrayList<>();
-        String sql = "SELECT id, name, CPF FROM clients ORDER BY created_at DESC LIMIT ? OFFSET ?";
+        String sql = "SELECT id, name, CPF FROM users WHERE user_function = 0 ORDER BY created_at DESC LIMIT ? OFFSET ?";
         try {
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setInt(1, limit);

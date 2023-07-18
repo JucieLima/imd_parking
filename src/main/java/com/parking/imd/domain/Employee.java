@@ -4,6 +4,8 @@ public class Employee extends Person {
     String email;
     String password;
 
+    String matricula;
+
     public String getEmail() {
         return email;
     }
@@ -18,5 +20,14 @@ public class Employee extends Person {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    @Override
+    public String getMatricula() {
+        return matricula;
+    }
+
+    public void setMatricula(String matricula) {
+        this.matricula = matricula;
     }
 }

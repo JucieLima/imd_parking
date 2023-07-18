@@ -4,6 +4,8 @@ import com.parking.imd.dao.DAO;
 import com.parking.imd.domain.Movement;
 import com.parking.imd.domain.Vehicle;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 public interface MovementDAO extends DAO {

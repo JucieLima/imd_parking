@@ -6,6 +6,7 @@
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
@@ -100,6 +101,16 @@
                   <Font size="24.0" />
                </font>
             </Label>
+            <Label alignment="CENTER" layoutX="10.0" layoutY="429.0" text="Disponíveis" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="labelAvailableVacancies" alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="455.0" text="0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </right>
@@ -107,7 +118,7 @@
       <AnchorPane fx:id="anchorPanePageView" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
             <Pagination fx:id="pagination" layoutX="53.0" layoutY="229.0" maxPageIndicatorCount="5" pageCount="1" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-            <TableView fx:id="tableViewMovements" layoutX="150.0" layoutY="74.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="20.0">
+            <TableView fx:id="tableViewMovements" layoutX="150.0" layoutY="98.0" prefHeight="367.0" prefWidth="560.0" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="98.0">
               <columns>
                 <TableColumn fx:id="tableColumnId" prefWidth="40.0" text="ID" />
                 <TableColumn fx:id="tableColumnLicencePlate" prefWidth="75.0" text="PLACA" />
@@ -118,6 +129,8 @@
                   <TableColumn fx:id="tableColumnStatus" prefWidth="120.0" text="STATUS" />
               </columns>
             </TableView>
+            <TextField fx:id="textFieldSearch" layoutY="61.0" onAction="#handleSearch" />
+            <Button fx:id="buttonSearch" layoutX="150.0" layoutY="61.0" mnemonicParsing="false" onAction="#handleSearch" text="Buscar" />
          </children>
       </AnchorPane>
    </center>

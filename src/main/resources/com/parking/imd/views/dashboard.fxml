@@ -26,7 +26,7 @@
                   <MenuItem mnemonicParsing="false" onAction="#handleMenuItemClientRegister" text="Cadastrar Cliente" />
                   <SeparatorMenuItem mnemonicParsing="false" />
             <MenuItem mnemonicParsing="false" text="Ver Funcionários" />
-                  <MenuItem mnemonicParsing="false" text="Cadastrar Funcionário" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleMenuItemEmployeeRegister" text="Cadastrar Funcionário" />
           </items>
         </Menu>
       </menus>

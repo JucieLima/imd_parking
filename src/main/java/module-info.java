@@ -4,6 +4,7 @@ module com.parks.imd.imdparking {
 
     requires org.controlsfx.controls;
     requires java.sql;
+    requires commons.validator;
 
     opens com.parking.imd to javafx.fxml;
     opens com.parking.imd.controllers to javafx.fxml;

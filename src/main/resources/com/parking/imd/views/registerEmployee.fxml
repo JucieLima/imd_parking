@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane prefHeight="650.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.parking.imd.controllers.RegisterEmployeeController">
+    <center>
+        <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <children>
+                <Label alignment="CENTER" layoutX="199.0" layoutY="42.0" style="-fx-label-padding: 10; -fx-background-color: #666;" text="Registro de Funcionário" textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <font>
+                        <Font name="System Bold" size="20.0" />
+                    </font>
+                </Label>
+                <Label layoutX="26.0" layoutY="90.0" text="Nome:" AnchorPane.leftAnchor="25.0">
+                    <font>
+                        <Font size="22.0" />
+                    </font>
+                </Label>
+                <TextField fx:id="textFieldName" layoutX="117.0" layoutY="83.0" AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="25.0">
+                    <font>
+                        <Font size="22.0" />
+                    </font>
+                </TextField>
+                <Label layoutX="26.0" layoutY="168.0" text="CPF:" AnchorPane.leftAnchor="25.0">
+                    <font>
+                        <Font size="22.0" />
+                    </font>
+                </Label>
+                <TextField fx:id="textFieldCPF" layoutX="110.0" layoutY="161.0" prefHeight="46.0" prefWidth="193.0" AnchorPane.leftAnchor="110.0">
+                    <font>
+                        <Font size="22.0" />
+                    </font>
+                </TextField>
+                <Label layoutX="367.0" layoutY="168.0" text="Email:" AnchorPane.leftAnchor="367.0">
+                    <font>
+                        <Font size="22.0" />
+                    </font>
+                </Label>
+                <TextField fx:id="textFieldEmail" layoutX="452.0" layoutY="161.0" prefHeight="46.0" prefWidth="483.0" AnchorPane.leftAnchor="452.0" AnchorPane.rightAnchor="25.0">
+                    <font>
+                        <Font size="22.0" />
+                    </font>
+                </TextField>
+                <Label layoutX="25.0" layoutY="246.0" text="Funcão:">
+                    <font>
+                        <Font size="22.0" />
+                    </font>
+                </Label>
+                <ComboBox fx:id="comboBoxFunction" layoutX="118.0" layoutY="243.0" prefHeight="39.0" prefWidth="182.0" promptText="Selecione" style="-fx-font-size: 14pt;" />
+                <Label layoutX="291.0" layoutY="319.0" text="Senha:" AnchorPane.leftAnchor="25.0">
+                    <font>
+                        <Font size="22.0" />
+                    </font>
+                </Label>
+                <PasswordField fx:id="passwordField" layoutX="379.0" layoutY="313.0" prefHeight="46.0" prefWidth="220.0" AnchorPane.leftAnchor="120.0">
+                    <font>
+                        <Font size="22.0" />
+                    </font>
+                </PasswordField>
+            <Label layoutX="397.0" layoutY="319.0" text="Confirmar Senha:">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Label>
+            <PasswordField fx:id="passwordFieldConfirm" layoutX="588.0" layoutY="313.0" prefHeight="46.0" prefWidth="220.0">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </PasswordField>
+                <Button layoutX="814.0" layoutY="434.0" mnemonicParsing="false" onAction="#handleButtonRegister" text="Cadastrar" AnchorPane.rightAnchor="23.0">
+                    <font>
+                        <Font size="22.0" />
+                    </font>
+                </Button>
+            </children>
+        </AnchorPane>
+    </center>
+</BorderPane>

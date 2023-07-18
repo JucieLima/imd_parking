@@ -21,4 +21,8 @@ public class Client extends Person {
     public void setVehicles(List<Vehicle> vehicles) {
         this.vehicles = vehicles;
     }
+
+    public String getMatricula(){
+        return this.getCPF();
+    }
 }

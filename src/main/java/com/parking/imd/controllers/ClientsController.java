@@ -134,7 +134,7 @@ public class ClientsController implements Initializable {
             Locale ptBr = new Locale("pt", "BR");
             labelClientBalance.setText(NumberFormat.getCurrencyInstance(ptBr).format(client.getAccount().getBalance()));
             labelClientName.setText(client.getNome());
-            labelClientCPF.setText(client.getCPF());
+            labelClientCPF.setText(client.getMatricula());
             labelClientVehicles.setText(String.valueOf(client.getVehicles().size()));
             clientVehicleList = client.getVehicles();
             loadTableviewVehicles();

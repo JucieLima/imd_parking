@@ -8,6 +8,7 @@ import com.parking.imd.data.DataBaseConfig;
 import com.parking.imd.data.Database;
 import com.parking.imd.data.DatabaseFactory;
 import com.parking.imd.domain.Movement;
+import com.parking.imd.util.IMDParkingFiles;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -54,7 +55,7 @@ public class PaymentController {
     private TableView<Movement> tableViewMovements;
 
     @FXML
-    private ComboBox<String>  comboBoxPaymentMethod;
+    private ComboBox<String> comboBoxPaymentMethod;
 
     @FXML
     private TableColumn<Movement, LocalDateTime> tableColumnEntry;
@@ -87,6 +88,7 @@ public class PaymentController {
 
     private final Database database = DatabaseFactory.getDatabase(DataBaseConfig.DATABASE);
     private final Connection connection;
+
     {
         assert database != null;
         connection = database.connect();
@@ -118,7 +120,7 @@ public class PaymentController {
     }
 
     private void releaseCardPayment() {
-        if(!finished){
+        if (!finished) {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/parking/imd/views/cardPayment.fxml"));
             AnchorPane anchorPane;
             try {
@@ -134,9 +136,9 @@ public class PaymentController {
             CardPaymentController controller = loader.getController();
             controller.startPayment(stage, this.paymentValue);
             stage.showAndWait();
-            if(controller.isConfirmed()){
+            if (controller.isConfirmed()) {
                 finishPayment(controller.getPayment());
-            }else{
+            } else {
                 openAlert(
                         "Pagamento não realizado",
                         "AVISO",
@@ -144,7 +146,7 @@ public class PaymentController {
                         Alert.AlertType.WARNING
                 );
             }
-        }else{
+        } else {
             openAlert(
                     "Pagamento finalzado",
                     "AVISO",
@@ -155,7 +157,7 @@ public class PaymentController {
     }
 
     private void releaseCashPayment() {
-        if(!finished){
+        if (!finished) {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/parking/imd/views/cashPayment.fxml"));
             AnchorPane anchorPane;
             try {
@@ -172,10 +174,10 @@ public class PaymentController {
             controller.setStage(stage);
             controller.setValue(this.paymentValue);
             stage.showAndWait();
-            if(controller.isConfirmed()){
+            if (controller.isConfirmed()) {
                 finishPayment(controller.getPayment());
             }
-        }else{
+        } else {
             openAlert(
                     "Pagamento finalzado",
                     "AVISO",
@@ -186,9 +188,10 @@ public class PaymentController {
     }
 
     private void finishPayment(Double payment) {
-        if(payment >= paymentValue){
+        if (payment >= paymentValue) {
             finished = true;
             updateMovementList(2);
+            IMDParkingFiles.addPaymentFile(movementList);
             Locale ptBr = new Locale("pt", "BR");
             labelCashChange.setText(NumberFormat.getCurrencyInstance(ptBr).format(payment - paymentValue));
             labelReceivedCash.setText(NumberFormat.getCurrencyInstance(ptBr).format(payment));
@@ -210,7 +213,7 @@ public class PaymentController {
             controller.setTextMsg("Pagamento realizado com sucesso!");
             controller.setStage(stage);
             stage.show();
-        }else{
+        } else {
             openAlert(
                     "Pagamento não realizado",
                     "Confira o valor!",
@@ -309,7 +312,7 @@ public class PaymentController {
                 } else {
                     int diff = (int) ChronoUnit.HOURS.between(item, LocalDateTime.now());
                     String timeString = diff == 1 ? "hora" : "horas";
-                    if(diff < 1){
+                    if (diff < 1) {
                         diff = (int) ChronoUnit.MINUTES.between(item, LocalDateTime.now());
                         timeString = diff == 1 ? "minuto" : "minutos";
                     }
@@ -321,9 +324,9 @@ public class PaymentController {
 
     @FXML
     public void handleButtonPrintInvoice() {
-        if(finished){
+        if (finished) {
             System.out.println("Imprimindo comprovamte...");
-        }else{
+        } else {
             openAlert(
                     "Aguardando pagamento",
                     "Aviso",

@@ -2,11 +2,17 @@ package com.parking.imd.dao.impl;
 
 import com.parking.imd.dao.interfaces.MovementDAO;
 import com.parking.imd.domain.Movement;
+import com.parking.imd.domain.Parking;
 import com.parking.imd.domain.Vehicle;
 
 import java.sql.*;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class MovementDaoImpl implements MovementDAO {
 

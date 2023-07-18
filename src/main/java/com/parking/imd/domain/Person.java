@@ -30,4 +30,6 @@ public abstract class Person {
         this.CPF = CPF;
     }
 
+    abstract String getMatricula();
+
 }
